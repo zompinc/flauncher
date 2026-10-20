@@ -63,7 +63,7 @@ class _FocusKeyboardListenerState extends State<FocusKeyboardListener> {
     }
     if (data.repeatCount == 0) {
       _keyDownAt = DateTime.now().millisecondsSinceEpoch;
-      return KeyEventResult.ignored;
+      return widget.onLongPress != null ? KeyEventResult.handled : KeyEventResult.ignored;
     } else if (_longPress()) {
       _keyDownAt = null;
       return widget.onLongPress?.call(key) ?? KeyEventResult.ignored;
